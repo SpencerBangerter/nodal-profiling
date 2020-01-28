@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/SpencerBangerter/nodal-profiling#readme",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "inquirer": "^7.0.4",
+    "puppeteer": "^2.1.0"
   }
 }

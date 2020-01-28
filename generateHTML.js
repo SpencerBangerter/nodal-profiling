@@ -1,23 +1,23 @@
 const colors = {
-  green: {
+  Green: {
     wrapperBackground: "#E6E1C3",
     headerBackground: "#C1C72C",
     headerColor: "black",
     photoBorderColor: "#black"
   },
-  blue: {
+  Blue: {
     wrapperBackground: "#5F64D3",
     headerBackground: "#26175A",
     headerColor: "white",
     photoBorderColor: "#73448C"
   },
-  pink: {
+  Pink: {
     wrapperBackground: "#879CDF",
     headerBackground: "#FF8374",
     headerColor: "white",
     photoBorderColor: "#FEE24C"
   },
-  red: {
+  Red: {
     wrapperBackground: "#DE9967",
     headerBackground: "#870603",
     headerColor: "white",
@@ -170,5 +170,64 @@ function generateHTML(data) {
             zoom: .75; 
           } 
          }
-      </style>`
-        }
+      </style>
+      <body>
+        
+      <div class="wrapper">
+    
+      <div class="photo-header">
+        <img src="${data.avatar_url}" alt="Profile Picture">
+        <h1>Hi!</h1>
+        <h1>My name is ${data.name}</h1>
+        <h2>I currently work at ${data.company}</h2>
+        <ul class="links-nav">
+          <li class="nav-link"><a href="https://www.google.com/maps/place/${
+            data.location
+          }"><i class="fas fa-map" aria-hidden="true"></i> ${
+    data.location
+  }</a></li>
+          <li class="nav-link"><a href="${
+            data.html_url
+          }"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+          <li class="nav-link"><a href="${
+            data.blog
+          }"><i class="fab fa-blogger"></i> Blog</a></li>
+        </ul>        
+      </div>
+      <main>
+      <div class="container">
+        <h4>${data.bio}</h4>
+        <div class="row">
+        <div class="col">
+        <div class="card">
+        <h4>Public Repositories</h4>
+        <p>${data.public_repos}</p>
+        </div>
+        </div>
+        <div class="col">
+        <div class="card">
+        <h4>Followers</h4>
+        <p>${data.followers}</p>
+        </div>
+        </div>
+        </div>
+        
+        <div class="row">
+        <div class="col">
+        <div class="card">
+        <h4>GitHub Stars</h4>
+        <p>${data.starCount}</p>
+        </div>
+        </div>
+        <div class="col">
+        <div class="card">
+        <h4>Following</h4>
+        <p>${data.following}</p>
+        </div>
+        </div>
+        </div>
+      </div>
+      </main>
+      </div>
+    </body>`;
+}
