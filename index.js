@@ -3,6 +3,8 @@ const axios = require("axios");
 const puppeteer = require("puppeteer");
 const generateHTML = require("./generateHTML.js")
 const util = require("util");
+const fs = require("fs");
+const writeFileAsync = util.promisify(fs.writeFile);
 
 const questions = [
     {
@@ -23,13 +25,13 @@ const questions = [
 async function init() {
     try {
         let { username } = await promptName();
-        let color = await promptColor();
+        let { color } = await promptColor();
         let profile = await gitHubApiCall(username);
-        profile.color = color.color
+        profile.color = color
 
-        console.log('\Developer Profile:');
-        console.log(profile.data);
         writeToFile(`${username}.html`, profile)
+
+
     }catch (err) {
         console.log(err);
       }
@@ -49,7 +51,7 @@ function promptName() {
 }
 
 function promptColor() {
-   const color = inquirer.prompt({
+   let color = inquirer.prompt({
         type: "list",
         message: "What is your favorite Color?",
         name: "color",
@@ -64,8 +66,7 @@ function gitHubApiCall(username) {
 }
 
 function writeToFile(fileName, data) {
-    generateHTML(data)
-}
+console.log(`${fileName}`, data.data, data.color)}
 
 //Run File
 init();
