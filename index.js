@@ -29,9 +29,11 @@ async function init() {
         let profile = await gitHubApiCall(username);
         profile.color = color
 
-        writeToFile(`${username}.html`, profile)
-
-
+        let htmlGen = generateHTML(profile);
+        writeFileAsync(`${username}.html`, htmlGen).then(function () {
+          console.log('File Created.')
+        })
+        console.log(profile)
     }catch (err) {
         console.log(err);
       }
