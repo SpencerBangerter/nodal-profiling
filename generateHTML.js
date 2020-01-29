@@ -1,11 +1,11 @@
-function generateHTML(data) {
+function generateHTML(profile) {
 
   const colors = {
     Green: {
       wrapperBackground: "#E6E1C3",
       headerBackground: "#C1C72C",
       headerColor: "black",
-      photoBorderColor: "#black"
+      photoBorderColor: "black"
     },
     Blue: {
       wrapperBackground: "#5F64D3",
@@ -53,7 +53,7 @@ function generateHTML(data) {
           height: 100%;
           }
           .wrapper {
-          background-color: ${colors[data.color].wrapperBackground};
+          background-color: ${colors[profile.color].wrapperBackground};
           padding-top: 100px;
           }
           body {
@@ -95,8 +95,8 @@ function generateHTML(data) {
           display: flex;
           justify-content: center;
           flex-wrap: wrap;
-          background-color: ${colors[data.color].headerBackground};
-          color: ${colors[data.color].headerColor};
+          background-color: ${colors[profile.color].headerBackground};
+          color: ${colors[profile.color].headerColor};
           padding: 10px;
           width: 95%;
           border-radius: 6px;
@@ -107,7 +107,7 @@ function generateHTML(data) {
           border-radius: 50%;
           object-fit: cover;
           margin-top: -75px;
-          border: 6px solid ${colors[data.color].photoBorderColor};
+          border: 6px solid ${colors[profile.color].photoBorderColor};
           box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
           }
           .photo-header h1, .photo-header h2 {
@@ -150,8 +150,8 @@ function generateHTML(data) {
           .card {
             padding: 20px;
             border-radius: 6px;
-            background-color: ${colors[data.color].headerBackground};
-            color: ${colors[data.color].headerColor};
+            background-color: ${colors[profile.color].headerBackground};
+            color: ${colors[profile.color].headerColor};
             margin: 20px;
           }
           
@@ -177,38 +177,38 @@ function generateHTML(data) {
         <div class="wrapper">
       
         <div class="photo-header">
-          <img src="${data.avatar_url}" alt="Profile Picture">
+          <img src="${profile.avatar_url}" alt="Profile Picture">
           <h1>Hi!</h1>
-          <h1>My name is ${data.name}</h1>
-          <h2>I currently work at ${data.company}</h2>
+          <h1>My name is ${profile.name}</h1>
+          <h2>I currently work at ${profile.company}</h2>
           <ul class="links-nav">
             <li class="nav-link"><a href="https://www.google.com/maps/place/${
-              data.location
+              profile.location
             }"><i class="fas fa-map" aria-hidden="true"></i> ${
-      data.location
+      profile.location
     }</a></li>
             <li class="nav-link"><a href="${
-              data.html_url
+              profile.html_url
             }"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
             <li class="nav-link"><a href="${
-              data.blog
+              profile.blog
             }"><i class="fab fa-blogger"></i> Blog</a></li>
           </ul>        
         </div>
         <main>
         <div class="container">
-          <h4>${data.bio}</h4>
+          <h4>${profile.bio}</h4>
           <div class="row">
           <div class="col">
           <div class="card">
           <h4>Public Repositories</h4>
-          <p>${data.public_repos}</p>
+          <p>${profile.public_repos}</p>
           </div>
           </div>
           <div class="col">
           <div class="card">
           <h4>Followers</h4>
-          <p>${data.followers}</p>
+          <p>${profile.followers}</p>
           </div>
           </div>
           </div>
@@ -217,13 +217,13 @@ function generateHTML(data) {
           <div class="col">
           <div class="card">
           <h4>GitHub Stars</h4>
-          <p>${data.starCount}</p>
+          <p>${profile.starCount}</p>
           </div>
           </div>
           <div class="col">
           <div class="card">
           <h4>Following</h4>
-          <p>${data.following}</p>
+          <p>${profile.following}</p>
           </div>
           </div>
           </div>
