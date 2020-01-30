@@ -1,5 +1,4 @@
 function generateHTML(profile) {
-
   const colors = {
     Green: {
       wrapperBackground: "#E6E1C3",
@@ -25,9 +24,9 @@ function generateHTML(profile) {
       headerColor: "white",
       photoBorderColor: "white"
     }
-  }
+  };
 
-    return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
   <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -180,13 +179,13 @@ function generateHTML(profile) {
           <img src="${profile.avatar_url}" alt="Profile Picture">
           <h1>Hi!</h1>
           <h1>My name is ${profile.name}</h1>
-          <h2>I currently work at ${profile.company || "an undetermined place."}</h2>
+          <h2>I currently work at ${profile.company ||
+            "an undetermined place."}</h2>
           <ul class="links-nav">
-            <li class="nav-link"><a href="https://www.google.com/maps/place/${
-              profile.location || 'No location provided in GitHub'
-            }"><i class="fas fa-map" aria-hidden="true"></i> ${
-      profile.location
-    }</a></li>
+            <li class="nav-link"><a href="https://www.google.com/maps/place/${profile.location ||
+              "No location provided in GitHub"}"><i class="fas fa-map" aria-hidden="true"></i> ${
+    profile.location
+  }</a></li>
             <li class="nav-link"><a href="${
               profile.html_url
             }"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
