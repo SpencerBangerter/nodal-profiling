@@ -27,13 +27,14 @@ async function init() {
         let { username } = await promptName();
         let { color } = await promptColor();
         let profile = await gitHubApiCall(username);
-        profile.data.color = color
-
+        let starCountArray = await gitHubStarCount(username);
+        profile.data.color = color;
+        let starredCount = starCountArray.data.length;
+        profile.data.starCount = starredCount;
         let htmlGen = generateHTML(profile.data);
         writeFileAsync(`${username}.html`, htmlGen).then(function () {
           console.log('File Created.')
-        })
-        console.log(profile.data, profile.color)
+        });
     }catch (err) {
         console.log(err);
       }
@@ -63,12 +64,14 @@ function promptColor() {
 }
 
 function gitHubApiCall(username) {
-    const result = axios.get(`https://api.github.com/users/${username}`);
-    return result;
+  const result = axios.get(`https://api.github.com/users/${username}`);
+  return result;
 }
 
-function writeToFile(fileName, data) {
-console.log(`${fileName}`, data.data, data.color)}
+function gitHubStarCount(username) {
+  let starCount = axios.get(`https://api.github.com/users/${username}/starred`);
+  return starCount;
+}
 
 //Run File
 init();
