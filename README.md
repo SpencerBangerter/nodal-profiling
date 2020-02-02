@@ -27,3 +27,9 @@ An HTML page will be created and converted to PDF format and saved to the local 
 * Number of GitHub stars
 * Number of users following
 
+### Exapmle PDF and Running the Program
+
+![Sample PDF](https://github.com/SpencerBangerter/nodal-profiling/blob/master/spencerbangerter.pdf)
+
+![Video Instructions](https://github.com/SpencerBangerter/nodal-profiling/blob/master/Screen%20Recording%202020-02-01%20at%209.53.19%20PM.mov) 
+
