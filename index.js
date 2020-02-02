@@ -4,22 +4,9 @@ const generateHTML = require("./generateHTML.js");
 const util = require("util");
 const fs = require("fs");
 const writeFileAsync = util.promisify(fs.writeFile);
-var pdf = require('html-pdf');
+const pdf = require('html-pdf');
 
-const questions = [
-  {
-    type: "input",
-    message: "What is your GitHub user name?",
-    name: "username"
-  },
-  {
-    type: "list",
-    message: "What is your favorite Color?",
-    name: "color",
-    choices: ["green", "blue", "pink", "red"]
-  }
-];
-
+let user
 async function init() {
   try {
     let { username } = await promptName();
@@ -32,7 +19,7 @@ async function init() {
     let htmlGen = generateHTML(profile.data);
     writeFileAsync(`${username}.html`, htmlGen).then(function() {
       console.log("File Created.");
-      pdfGen(htmlGen)
+      pdfGen(htmlGen, username)
     });
   } catch (err) {
     console.log(err);
@@ -60,8 +47,8 @@ function promptColor() {
   return color;
 }
 
-function pdfGen(html) {
-pdf.create(html).toFile('test.pdf', function(err, res){
+function pdfGen(html, username) {
+pdf.create(html).toFile(`${username}.pdf`, function(err, res){
   console.log(res.filename);
 });  }
 function gitHubApiCall(username) {
